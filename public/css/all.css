@@ -1,0 +1,56 @@
+:root {
+  --black: #000000;
+  --black-light: #1C1C1C;
+  --black-other: #0C0C0C;
+  --cyan: #04B4EC;
+  --cyan-light: #04FBFC;
+  --cyan-other: #04ACF4;
+  --blue: #040484;
+  --blue-light: #1738F3;
+  --blue-other: #040484;
+  --brown: #805D3C;
+  --brown-light: #3C2414;
+  --brown-other: #CCA46C;
+  --red: #FC0404;
+  --red-light: #E42434;
+  --red-other: #E80C08;
+  --gray: #545454;
+  --gray-light: #D4D4D4;
+  --gray-other: #4C4C54;
+  --green: #04AC64;
+  --green-light: #1FA728;
+  --green-other: #046C1C;
+  --orange: #FC5C1C;
+  --orange-light: #FC9C04;
+  --orange-other: #FC6404;
+  --purple: #9F04C9;
+  --purple-light: #844CD4;
+  --purple-other: #630480;
+  --pink: #E90694;
+  --pink-light: #FC14F4;
+  --pink-other: #FC0CA4;
+  --white: #FFFFFF;
+  --white-light: #E4E4E4;
+  --white-other: #DCDCDC;
+  --yellow: #FCFC04;
+  --yellow-light: #FCFB3B;
+  --yellow-other: #FCF40C;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+}

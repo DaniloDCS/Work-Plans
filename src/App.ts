@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import layouts from "express-ejs-layouts";
+
 import router from "./routes";
+import Account from "./models/Account";
 
 class App {
   public express: express.Application;
@@ -10,6 +12,7 @@ class App {
     this.express = express();
     this.middleware();
     this.routes();
+    this.database();
   }
 
   private middleware(): void {
@@ -23,6 +26,10 @@ class App {
 
   private routes(): void {
     this.express.use(router);
+  }
+
+  private database(): void {
+    this.express.use("/account", Account);
   }
 }
 
