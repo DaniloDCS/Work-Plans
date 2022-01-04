@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import auth from "./auth";
+import App from "./App";
 
 const routes = Router();
 
@@ -22,7 +23,11 @@ routes.get("/forgot", async (req: Request, res: Response) => {
 });
 
 routes.get("/dashboard", auth.auth, async (req: Request, res: Response) => {
-  res.render("pages/dashboard");
+  const user = App.get("user");
+
+  res.render("pages/dashboard", {
+    user,
+  });
 });
 
 export default routes;
