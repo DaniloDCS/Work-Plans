@@ -1,21 +1,58 @@
-<a href="/">Do you have account? Sign In</a>
-<form action="/account/forgot" method="post">
-    <h1 class="text-center">Forgot password</h1>
-    <div class="text-center">
-        Confirm your data for localization your account. Pls!
+<div class="block">
+    <div class="col-1"></div>
+    <div class="col-2">
+        <a class="link" href="/">
+            <h4 class="text-green text-end">
+                Do you have account? Sign In now!
+                <i class="fas fa-arrow-right"></i>
+            </h4>
+        </a>
+        <form action="/account/authenticate" method="post">
+            <h2 class="text-cyan">Forgot your password?</h2>
+            <h4 class="text-center">
+                Confirm your data for localization your account. Pls!
+            </h4>
+            <div class="group mt-2">
+                <input required type="text" id="username" name="username">
+                <label for="username">
+                    <i class="fas fa-user-tag"></i>
+                    Your username
+                </label>
+            </div>
+            <div class="group">
+                <input required type="email" id="email" name="email">
+                <label for="email">
+                    <i class="fas fa-envelope-open"></i>
+                    Your email
+                </label>
+            </div>
+            <div class="group">
+                <input required type="tel" id="phone" name="phone">
+                <label for="phone">
+                    <i class="fas fa-mobile"></i>
+                    Your phone number
+                </label>
+            </div>
+            <div class="group group-btn-2">
+                <button type="submit" class="bg-blue">
+                    <i class="fas fa-search"></i>
+                    Localize my account
+                </button>
+                <button type="reset" class="bg-red">
+                    <i class="fas fa-times-circle"></i>
+                    Cancel
+                </button>
+            </div>
+            <a class="link" href="/signup">
+                <h4 class="text-green text-end">
+                    Don't have account? Sign Up now!
+                    <i class="fas fa-arrow-right"></i>
+                </h4>
+            </a>
+            <section class="text-center p-2">
+                <span class="text-cyan"><strong>Developed by:</strong></span>
+                <span class="text-green"><strong>Positron Technology & Danilo Costa</strong></span>
+            </section>
+        </form>
     </div>
-    <div class="group">
-        <label for="username">Your username</label>
-        <input required type="text" id="username" name="username">
-    </div>
-    <div class="group">
-        <label for="email">Your email</label>
-        <input required type="email" id="email" name="email">
-    </div>
-    <div class="group">
-        <label for="phone">Your phone number</label>
-        <input required type="tel" id="phone" name="phone">
-    </div>
-    <button type="submit">Localize my account</button>
-    <button type="reset">Cancel</button>
-</form>
+</div>

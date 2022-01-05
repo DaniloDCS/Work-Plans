@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Plans</title>
+    <title>Work Plans | <%= title %></title>
+    <link rel="shortcut icon" href="/public/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/public/css/all.css">
+    <link rel="stylesheet" href="/public/css/<%= title.toLowerCase().replace(/ /, '') %>.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <script async src="/public/js/<%= title.toLowerCase().replace(/ /, '') %>.js"></script>
 </head>
 
 <body>
     <div class="container">
         <%- body %>
     </div>
-    <footer>
-        <section>
-            <span>Developed by: Danilo Costa & Positron Technology</span>
-        </section>
-    </footer>
 </body>
 
 </html>

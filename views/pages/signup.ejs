@@ -1,32 +1,72 @@
-<a href="/">Do you have account? Sign In</a>
-<form action="/account/register" method="post">
-    <h1 class="text-center">Sign Up</h1>
-    <div class="group">
-        <label for="name">Your name</label>
-        <input required type="text" id="name" name="name">
+<div class="block">
+    <div class="col-1"></div>
+    <div class="col-2">
+        <a class="link" href="/">
+            <h4 class="text-green text-end">Do you have account? Sign In now!
+                <i class="fas fa-arrow-right"></i>
+            </h4>
+        </a>
+        <form action="/account/register" method="post" autocomplete="off">
+            <div class="group">
+                <input autocomplete="off" required oninput="valid(this)" type="text" id="name" name="name">
+                <label for="name">
+                    <i class="far fa-id-badge"></i> Your name
+                </label>
+                <div id="name-valid"></div>
+            </div>
+            <div class="group">
+                <input autocomplete="off" required type="text" oninput="valid(this)" id="username" name="username">
+                <label for="username">
+                    <i class="fas fa-user-tag"></i> Create an username
+                </label>
+                <div id="username-valid"></div>
+            </div>
+            <div class="group">
+                <input autocomplete="off" required oninput="valid(this)" type="email" id="email" name="email">
+                <label for="email">
+                    <i class="fas fa-envelope-open"></i> Your email
+                </label>
+                <div id="email-valid"></div>
+            </div>
+            <div class="group">
+                <input autocomplete="off" required oninput="valid(this)" type="tel" id="phone" name="phone">
+                <label for="phone">
+                    <i class="fas fa-mobile"></i> Your phone number
+                </label>
+                <div id="phone-valid"></div>
+            </div>
+            <div class="group group-password">
+                <input autocomplete="off" required oninput="valid(this)" type="password" id="password" name="password">
+                <i class="text-green fas fa-eye" onclick="passwordView(this)"></i>
+                <label for="password">
+                    <i class="fas fa-user-lock"></i>
+                    Create a strong password
+                </label>
+                <div id="password-valid"></div>
+            </div>
+            <div class="group">
+                <input autocomplete="off" required oninput="valid(this)" type="password" id="password-request"
+                    name="password-request">
+                <label for="password-request">
+                    <i class="fas fa-user-lock"></i>
+                    Repeat your password to confirm
+                </label>
+                <div id="password-request-valid"></div>
+            </div>
+            <div class="group group-btn-2">
+                <button type="submit" class="bg-blue">
+                    <i class="fas fa-user-check"></i>
+                    Finish my registration
+                </button>
+                <button type="reset" class="bg-red">
+                    <i class="fas fa-times-circle"></i>
+                    Cancel
+                </button>
+            </div>
+            <section class="text-center p-2">
+                <span class="text-cyan"><strong>Developed by:</strong></span>
+                <span class="text-green"><strong>Positron Technology & Danilo Costa</strong></span>
+            </section>
+        </form>
     </div>
-    <div class="group">
-        <label for="username">Create an username</label>
-        <input required type="text" id="username" name="username">
-    </div>
-    <div class="group">
-        <label for="email">Your email</label>
-        <input required type="email" id="email" name="email">
-    </div>
-    <div class="group">
-        <label for="phone">Your phone number</label>
-        <input required type="tel" id="phone" name="phone">
-    </div>
-    <div class="group">
-        <label for="password">Create a strong <strong>password</strong></label>
-        <input required type="password" id="password" name="password">
-    </div>
-    <div class="group">
-        <label for="password-request">Repeat your password to confirm</label>
-        <input required type="password" id="password-request" name="password-request">
-    </div>
-    <div class="group">
-        <button type="submit">Finish my registration</button>
-        <button type="reset">Cancel</button>
-    </div>
-</form>
+</div>

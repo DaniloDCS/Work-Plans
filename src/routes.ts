@@ -11,15 +11,22 @@ routes.get("/description", async (req: Request, res: Response) => {
 });
 
 routes.get("/", async (req: Request, res: Response) => {
-  res.render("pages/signin");
+  res.render("pages/signin", {
+    title: "Sign In",
+    msg: "",
+  });
 });
 
 routes.get("/signup", async (req: Request, res: Response) => {
-  res.render("pages/signup");
+  res.render("pages/signup", {
+    title: "Sign Up",
+  });
 });
 
 routes.get("/forgot", async (req: Request, res: Response) => {
-  res.render("pages/forgot");
+  res.render("pages/forgot", {
+    title: "Forgot",
+  });
 });
 
 routes.get("/dashboard", auth.auth, async (req: Request, res: Response) => {
@@ -27,6 +34,7 @@ routes.get("/dashboard", auth.auth, async (req: Request, res: Response) => {
 
   res.render("pages/dashboard", {
     user,
+    title: "Dashboard",
   });
 });
 

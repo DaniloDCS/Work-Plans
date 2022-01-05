@@ -6,24 +6,44 @@ const account = Router();
 
 account.post("/authenticate", async (req: Request, res: Response) => {
   const { username, password } = req.body;
+  let email = "";
 
-  const { user, session, error } = await database.auth.signIn({
-    email: username,
-    password,
-  });
+  if (username.charAt(0) === "@") {
+    const { body, error } = await database
+      .from("Accounts")
+      .select("email")
+      .match({ username });
 
-  if (error) res.redirect("/");
+    email = body[0].email;
+    
+  } else {
+    email = username;
+  }
 
-  const me = {
-    email: user.email,
-    username: user.user_metadata.name,
-    name: user.user_metadata.name,
-    phone: user.user_metadata.phone,
-  };
+  if (email) {
+    const { user, session, error } = await database.auth.signIn({
+      email,
+      password,
+    });
 
-  App.set("user", { user: me, session });
-  
-  return res.redirect("/dashboard");
+    if (error) {
+      res.redirect("/");
+    } else {
+      const me = {
+        id: user.id,
+        email: user.email,
+        username: user.user_metadata.username,
+        name: user.user_metadata.name,
+        phone: user.user_metadata.phone,
+      };
+
+      App.set("user", { user: me, session });
+
+      return res.redirect("/dashboard");
+    }
+  } else {
+    res.redirect("/");
+  }
 });
 
 account.post("/register", async (req: Request, res: Response) => {
@@ -36,16 +56,33 @@ account.post("/register", async (req: Request, res: Response) => {
     },
     {
       data: {
-        username,
+        username: username.toLowerCase().replace(/ /g, ""),
         name,
         phone,
       },
     }
   );
 
-  if (error) res.redirect("/signup");
+  const my_id = user.id;
 
-  return res.redirect("/");
+  if (error) {
+    return res.redirect("/signup");
+  } else {
+    const { body } = await database.from("Accounts").insert({
+      user_id: my_id,
+      name,
+      email,
+      phone,
+      username: username.toLowerCase().replace(/ /g, ""),
+    });
+
+    const { user, session, error } = await database.auth.signIn({
+      email,
+      password,
+    });
+
+    return res.redirect("/dashboard");
+  }
 });
 
 account.get("/signout", async (req: Request, res: Response) => {
@@ -55,6 +92,19 @@ account.get("/signout", async (req: Request, res: Response) => {
 
 account.post("/recovery", async (req: Request, res: Response) => {
   return res.send("In construction...");
+});
+
+account.get("/check/:opt/:value", async (req: Request, res: Response) => {
+  const option = req.params.opt,
+    value = req.params.value;
+
+  const { count, error } = await database
+    .from("Accounts")
+    .select("*", { count: "exact" })
+    .like(`${option}`, `%${value}%`)
+    .limit(10);
+
+  res.json({ count, error });
 });
 
 export default account;
