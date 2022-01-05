@@ -422,6 +422,8 @@ button {
   color: var(--green);
   height: 15px;
   font-weight: 600;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 
 .group label {

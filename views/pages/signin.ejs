@@ -11,7 +11,7 @@
                 <input required type="text" name="username" id="username">
                 <label for="username">
                     <i class="fas fa-user"></i>
-                    Enter your username or email
+                    Username or email
                 </label>
             </div>
             <div class="group group-password">
@@ -23,16 +23,16 @@
                 </label>
             </div>
             <% if (msg){ %>
-                <% if (msg.status === 400){ %>
-                    <div class="alert alert-red">
-                        Error!
+            <% if (msg.status === 400){ %>
+            <div class="alert alert-red">
+                Error!
                 <% } else { %>
-                    <div class="alert alert-green">
-                        Success!
-                <% } %>
-                   <strong><%= msg.message %></strong> 
+                <div class="alert alert-green">
+                    Success!
+                    <% } %>
+                    <strong><%= msg.message %></strong>
                 </div>
-            <% } %>
+                <% } %>
                 <p class="text-center p-1">
                     <a href="/forgot" class="text-center link color-purple">
                         <i class="fas fa-question-circle"></i>
