@@ -423,7 +423,7 @@ button {
   height: 15px;
   font-weight: 600;
   text-overflow: ellipsis;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .group label {
@@ -468,5 +468,5 @@ button {
 .group-btn-2 button {
   width: 48%;
   margin: 1%;
-  padding: 12px;
+  padding: 10px;
 }

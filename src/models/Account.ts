@@ -15,7 +15,6 @@ account.post("/authenticate", async (req: Request, res: Response) => {
       .match({ username });
 
     email = body[0].email;
-    
   } else {
     email = username;
   }
@@ -29,15 +28,14 @@ account.post("/authenticate", async (req: Request, res: Response) => {
     if (error) {
       res.redirect("/");
     } else {
-      const me = {
-        id: user.id,
-        email: user.email,
-        username: user.user_metadata.username,
-        name: user.user_metadata.name,
-        phone: user.user_metadata.phone,
-      };
+      const me = await database
+        .from("Accounts")
+        .select("*")
+        .match({ user_id: user.id })
+        .limit(1)
+        .single();
 
-      App.set("user", { user: me, session });
+      App.set("user", { user: me.data, session });
 
       return res.redirect("/dashboard");
     }

@@ -1,7 +1,91 @@
-<h1>Dashboard</h1>
-<a href="/account/signout">Exit</a>
-<p><%= user.user.email %></p>
-<p><%= user.user.name %></p>
-<p><%= user.user.phone %></p>
-<p><%= user.user.username %></p>
-<p><%= user.user.id %></p>
+<div class="container">
+    <nav>
+        <h3>Work Plans</h3>
+        <a class="link text-red" href="/account/signout">Sign Out <i class="fas fa-power-off"></i> </a>
+    </nav>
+    <div class="row">
+        <div class="col-1">
+
+            <h2>Hello, <%= user.user.name.split(" ")[0] %></h2>
+            <h5 class="mt-2"><%= user.user.username %> - <%= user.user.phone %></h5>
+            <h5><%= user.user.email %></h5>
+
+            <h5 class="mt-2 text-blue">
+                <i class="fab fa-instagram"></i>
+                <%= user.user.instagram_username %>
+                <i class="fas fa-external-link-alt"></i>
+                <a class="link link-blue" target="__blank" href="<%= user.user.instagram_url %>">
+                    <i class="fas fa-link"></i>
+                </a>
+            </h5>
+            <ul class="menu">
+                <li>
+                    <a class="link text-gray" href="">
+                        <i class="fas fa-user-alt"></i>
+                        My account
+                    </a>
+                </li>
+                <li>
+                    <a class="link text-gray" href="">
+                        <i class="fas fa-calendar-alt"></i>
+                        Calendar
+                    </a>
+                </li>
+                <li>
+                    <a class="link text-gray" href="">
+                        <i class="fas fa-briefcase"></i>
+                        My Plans
+                    </a>
+                </li>
+                <li>
+                    <a class="link text-red" href="/account/signOut">
+                        <i class="fas fa-power-off"></i>
+                        Sign Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <!-- <p><%= user.user.id %></p> -->
+            <div class="work-list">
+                <% const months = ['Jan', 'Fev', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dez']; %>
+                <% plans.forEach(plan => { %>
+                <div class="work">
+                    <% let d = new Date(plan.date); %>
+                    <small>
+                        <em>Created in: <%= d.getDate() %> of <%= months[d.getMonth()] %>, <%= d.getFullYear() %></em>
+                    </small>
+                    <h4 class="work-title"><%= plan.title %></h4>
+                    <h4 class="work-url">
+                        <p><%= plan.post_url %> </p>
+                        <div>
+                            <i class="fas fa-link text-blue"></i>
+                            <i class="fas fa-external-link-alt text-green"></i>
+                        </div>
+                    </h4>
+                    <div class="work-content">
+                        <%= plan.content %>
+                    </div>
+                    <div class="work-options">
+                        <div class="work-details">
+                            <span class="text-red link">
+                                <i class="fas fa-heart"></i>
+                                <%= plan.likes %>
+                            </span>
+                            <span class="text-green link">
+                                <i class="far fa-comment-alt"></i>
+                                <%= plan.comments %>
+                            </span>
+                        </div>
+                        <div class="work-buttons">
+                            <i class="fas fa-edit text-blue"></i>
+                            <i class="fas fa-trash text-red"></i>
+                            <i class="fas fa-star text-yellow"></i>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+body {
+  padding: 2%;
+  background-color: #f6f6f6;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0%;
+  background-color: var(--green);
+  width: 100%;
+  padding: 10px;
+}
+
+.row {
+  width: 100%;
+  height: 95%;
+  margin-top: 40px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.col-1,
+.col-2 {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.col-1 {
+  width: 20%;
+  background-color: white;
+  filter: drop-shadow(0 0 10px #555);
+}
+
+.col-2 {
+  width: 74%;
+  background-color: var(--green);
+}
+
+.work-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.work {
+  width: 42%;
+  margin: 1% 2%;
+  height: 240px;
+  background-color: white;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 5px #333);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.work:hover {
+  transform: scale(1.2);
+  z-index: 100;
+  transition: .4s linear;
+}
+
+.menu {
+  margin-top: 10px;
+  list-style-type: none;
+  background-color: var(--gray-light);
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.menu li {
+  padding: 8px;
+  font-size: small;
+}
+
+.menu li:nth-child(1n):not(:last-child) {
+  border-bottom: 1px solid var(--gray);
+}
+
+.work-title {
+  margin-top: 5px;
+}
+
+.work-title,
+.work-url p,
+.work-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.work-url {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-url i {
+  margin: 0 4px;
+}
+
+.work-details {
+  margin-top: 6px;
+}
+
+.work-content {
+  background-color: var(--gray-light);
+  height: 60%;
+  padding: 6px;
+  margin-top: 5px;
+  border-radius: 6px;
+  white-space: normal;
+  overflow-y: auto;
+}
+
+.work-options {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

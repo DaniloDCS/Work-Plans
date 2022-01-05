@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import auth from "./auth";
 import App from "./App";
+import database from "./connection";
 
 const routes = Router();
 
@@ -31,10 +32,15 @@ routes.get("/forgot", async (req: Request, res: Response) => {
 
 routes.get("/dashboard", auth.auth, async (req: Request, res: Response) => {
   const user = App.get("user");
+  const plans = await database
+    .from("Accounts")
+    .select("plans")
+    .match({ "user_id": user.user.user_id });
 
   res.render("pages/dashboard", {
     user,
     title: "Dashboard",
+    plans: plans.data[0].plans,
   });
 });
 
